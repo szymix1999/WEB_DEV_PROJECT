@@ -1,5 +1,6 @@
 "use strict";
 var app = require("express")();
+const bodyParser = require("body-parser");
 
 var config = {
   appRoot: __dirname, // required config
@@ -9,6 +10,8 @@ const production = true;
 
 if (production) {
   require("./api/db/mongoose");
+
+  app.use(bodyParser.json());
 
   const image = require("./api/routes/image");
   app.use("/images", image);

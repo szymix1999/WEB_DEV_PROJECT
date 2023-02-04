@@ -10,7 +10,4 @@ const ImageSchema = new mongoose.Schema({
 
 const Image = mongoose.model("Image", ImageSchema);
 
-// const image = new Image({ title: "ale", description: "jazda", size: 1010 });
-// image.save();
-
 module.exports = Image;

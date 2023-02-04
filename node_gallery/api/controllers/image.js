@@ -9,32 +9,45 @@ module.exports = {
   deleteImage,
 };
 
-var testData = {
-  id: "0123456789abcd",
-  title: "Testowy  obrazek",
-  description: "Opis  do  obrazka",
-  date: "2017-11-09T10:20:00.214Z",
-  path: "/library/images/",
-  size: 1024,
-};
-
-function listImages(req, res, next) {
-  Image.find().then((r) => console.log(r));
-  res.json({});
+async function listImages(req, res, next) {
+  const all = await Image.find();
+  res.json(all);
 }
 
-function createImage(req, res, next) {
-  res.json();
+async function createImage(req, res, next) {
+  const { title, description, path, size, date } = req.body;
+  try {
+    const image = new Image({ title, description, size, path, date });
+    image.save();
+    res.json({ messages: "Udało się dodać obrazek" });
+  } catch (res) {
+    res.json({ messages: res });
+  }
 }
 
-function readImage(req, res, next) {
-  res.json(testData);
+async function readImage(req, res, next) {
+  try {
+    const image = await Image.findById(req.params.imageId);
+    res.json(image);
+  } catch {
+    res.json({ message: "Obrazek o danym Id nie istnieje" });
+  }
 }
 
-function updateImage(req, res, next) {
-  res.json();
+async function updateImage(req, res, next) {
+  try {
+    await Image.findByIdAndUpdate(req.params.imageId, req.body);
+    res.json({ messages: "Dokonano modyfikacji" });
+  } catch {
+    res.json({ messages: "Nie udało się zaktualizować obrazka" });
+  }
 }
 
-function deleteImage(req, res, next) {
-  res.json();
+async function deleteImage(req, res, next) {
+  try {
+    await Image.findByIdAndDelete(req.params.imageId);
+    res.json({ messages: "Usunięto" });
+  } catch {
+    res.json({ messages: "Nie udało się usunąć obrazka" });
+  }
 }
