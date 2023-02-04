@@ -9,11 +9,15 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.12.3",
+    "mongoose": "5.13.14",
     "swagger-express-mw": "^0.1.0"
   },
   "devDependencies": {
     "should": "^7.1.0",
     "supertest": "^1.0.0"
+  },
+  "resolutions": {
+    "bson": "1.1.6"
   },
   "scripts": {
     "start": "node app.js",
