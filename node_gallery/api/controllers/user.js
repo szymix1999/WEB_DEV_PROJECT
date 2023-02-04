@@ -22,7 +22,9 @@ async function login(req, res, next) {
 
     if (isValidPassword) {
       const token = jwt.sign(
-        { first_name: user.first_name, last_name: user.last_name },
+        {
+          email: user.email,
+        },
         "kod",
         { expiresIn: "1h" }
       );
