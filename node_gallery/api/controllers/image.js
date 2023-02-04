@@ -1,4 +1,5 @@
 "use  strict";
+const Image = require("../db/models/image");
 
 module.exports = {
   listImages,
@@ -18,7 +19,8 @@ var testData = {
 };
 
 function listImages(req, res, next) {
-  res.json();
+  Image.find().then((r) => console.log(r));
+  res.json({});
 }
 
 function createImage(req, res, next) {

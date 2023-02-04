@@ -1,21 +1,32 @@
 "use strict";
-var SwaggerExpress = require("swagger-express-mw");
 var app = require("express")();
-require("./db/mongoose");
-module.exports = app; // for testing
 
 var config = {
   appRoot: __dirname, // required config
 };
 
-SwaggerExpress.create(config, function (err, swaggerExpress) {
-  if (err) {
-    throw err;
-  }
+const production = true;
 
-  // install middleware
-  swaggerExpress.register(app);
+if (production) {
+  require("./api/db/mongoose");
 
-  var port = process.env.PORT || 10010;
-  app.listen(port);
-});
+  const image = require("./api/routes/image");
+  app.use("/images", image);
+
+  app.listen(8000);
+} else {
+  var SwaggerExpress = require("swagger-express-mw");
+  SwaggerExpress.create(config, function (err, swaggerExpress) {
+    if (err) {
+      throw err;
+    }
+
+    // install middleware
+    swaggerExpress.register(app);
+
+    var port = process.env.PORT || 10010;
+    app.listen(port);
+  });
+}
+
+module.exports = app;
