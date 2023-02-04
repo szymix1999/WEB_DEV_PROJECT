@@ -16,6 +16,9 @@ if (production) {
   const image = require("./api/routes/image");
   app.use("/images", image);
 
+  const user = require("./api/routes/user");
+  app.use("/", user);
+
   app.listen(8000);
 } else {
   var SwaggerExpress = require("swagger-express-mw");
