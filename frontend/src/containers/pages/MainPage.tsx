@@ -1,19 +1,19 @@
 import React from "react";
 
-import BoxPlayersList from "../../components/BoxPlayersList/BoxPlayersList";
+import BoxPhotoGallery from "../../components/BoxPhotoGallery/BoxPhotoGallery";
 
 const MainPage: React.FC<any> = ({ title, box }: any): JSX.Element | null => {
   React.useEffect(() => {
     if (title) {
-      document.title = `${title} - SureTime`;
+      document.title = `${title} - Gallery`;
     } else {
-      document.title = `Witamy! - SureTime`;
+      document.title = `Witamy!`;
     }
   });
 
   return (
     <div className="flex flex-col w-full h-full">
-      <BoxPlayersList />
+      <BoxPhotoGallery />
     </div>
   );
 };

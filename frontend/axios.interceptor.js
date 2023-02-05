@@ -36,9 +36,7 @@ const a = () => {
 
   axios.interceptors.request.use(
     function (config) {
-      config.headers.Authorization = `Bearer ${getCookies().get(
-        "accessToken"
-      )}`;
+      config.headers.Authorization = `${getCookies().get("accessToken")}`;
       return config;
     },
     function (error) {

@@ -26,20 +26,18 @@ const Header: React.FC<any> = (): JSX.Element | null => {
                   src="https://cdn1.iconfinder.com/data/icons/self-care-during-self-quarantine/512/mind-care-08-1024.png"
                   alt="logo"
                 />
-                <div className="m-2 text-lg">BookShop</div>
+                <div className="m-2 text-lg">PhotoGallery</div>
               </div>
             </Link>
             {logged ? (
-              <Link to="/cart">
-                <div className="flex items-center">
-                  <img
-                    className="h-10 w-10 p-1 rounded-[50%]"
-                    src="https://mkszatokabraniewo.pl/wp-content/uploads/2021/03/avatar.jpg"
-                    alt="logo"
-                  />
-                  <div className="m-2 text-lg rounded p-1 hover:bg-emerald-600">Koszyk</div>
-                </div>
-              </Link>
+              <div className="flex items-center">
+                <img
+                  className="h-10 w-10 p-1 rounded-[50%]"
+                  src="https://mkszatokabraniewo.pl/wp-content/uploads/2021/03/avatar.jpg"
+                  alt="logo"
+                />
+                <div className="m-2 text-lg">Zalogowano</div>
+              </div>
             ) : (
               <Link to="/login">
                 <div className="flex items-center">

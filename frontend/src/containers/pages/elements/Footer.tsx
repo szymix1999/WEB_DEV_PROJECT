@@ -12,7 +12,7 @@ const Footer: React.FC<any> = (): JSX.Element | null => {
           />
         </div>
       </a>
-      <div>2022 © SKE Project</div>
+      <div>2023 WEB_DEV</div>
     </footer>
   );
 };

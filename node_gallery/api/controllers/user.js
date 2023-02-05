@@ -14,7 +14,7 @@ async function login(req, res, next) {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      res.json({ messages: "Niepoprawne dane logowania" });
+      res.status(400).json({ messages: "Niepoprawne dane logowania" });
       return;
     }
 
@@ -32,9 +32,9 @@ async function login(req, res, next) {
       return;
     }
 
-    res.json({ messages: "Niepoprawne dane logowania" });
+    res.status(400).json({ messages: "Niepoprawne dane logowania" });
   } catch (r) {
-    res.json({ messages: "Nie udało się zarejestrować" });
+    res.status(400).json({ messages: "Nie udało się zalogowć" });
   }
 }
 
@@ -54,6 +54,6 @@ async function register(req, res, next) {
     await user.save();
     res.json({ messages: "Udało się zarejestrować" });
   } catch (r) {
-    res.json({ messages: "Nie udało się zarejestrować" });
+    res.json({ messages: "Nie udało się zarejestrować" }).status(400);
   }
 }

@@ -13,14 +13,14 @@ const BoxLogin: React.FC<any> = (): JSX.Element | null => {
 
     if (usernameValue && passwordValue) {
       axios
-        .post("/api/auth/login", {
-          username: usernameValue,
+        .post("/login", {
+          email: usernameValue,
           password: passwordValue,
         })
         .then((res) => {
           console.log(res);
           setAccessToken(res.data.token);
-          setUserUUID(res.data.id)
+          setUserUUID(usernameValue);
         })
         .catch(() => {
           console.log("niema");
